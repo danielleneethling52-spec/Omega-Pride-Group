@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omega Pride | Who We Have Helped</title>
+
+<style>
+:root{
+    --bg:#050505;
+    --surface:#111112;
+    --accent:#3b82f6;
+    --text:#ffffff;
+    --muted:#a1a1aa;
+    --border:rgba(255,255,255,0.08);
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* NAV */
+nav{
+    padding:20px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(5,5,5,0.85);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    z-index:10;
+}
+.logo{
+    font-weight:900;
+    letter-spacing:-1px;
+}
+.logo span{ color:var(--accent); }
+
+/* HERO */
+.hero{
+    height:65vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 10%;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), #050505),
+        url("https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=2000") center/cover;
+}
+
+.hero h1{
+    font-size:4rem;
+    letter-spacing:-2px;
+    margin:0;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:700px;
+    margin:15px auto 0;
+}
+
+/* SECTION */
+.section{
+    padding:80px 10%;
+}
+
+.section h2{
+    font-size:2.5rem;
+    margin-bottom:40px;
+    letter-spacing:-1px;
+}
+
+/* STORY CARD */
+.story{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
+    margin-bottom:25px;
+    transition:0.3s;
+}
+
+.story:hover{
+    border-color:rgba(59,130,246,0.4);
+    transform:translateY(-3px);
+}
+
+.tag{
+    color:var(--accent);
+    font-size:0.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.story h3{
+    margin:10px 0 15px;
+}
+
+.story p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* CTA */
+.cta{
+    background:linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
+    border:1px solid var(--border);
+    padding:40px;
+    border-radius:24px;
+    text-align:center;
+}
+
+.cta h2{
+    margin-bottom:10px;
+}
+
+.btn{
+    margin-top:20px;
+    padding:14px 22px;
+    background:var(--accent);
+    border:none;
+    color:white;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">OMEGA<span>PRIDE</span></div>
+    <div style="color:var(--muted); font-size:0.8rem;">Impact Stories</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Who We Have Helped</h1>
+        <p>Real stories. Real impact. Real lives changed through community-driven events.</p>
+    </div>
+</section>
+
+<!-- STORIES -->
+<section class="section">
+    <h2>Impact Stories</h2>
+
+    <!-- ANZIO -->
+    <div class="story">
+        <div class="tag">2022 • Child Support Initiative</div>
+        <h3>Anzio’s Story</h3>
+        <p>
+            Omega Pride Events had the honour of supporting Anzio, a 13-year-old boy who spent much of his life in and out of the Red Cross Children’s Hospital.
+            Despite his challenges, his dream was simple — to own a cellphone.
+        </p>
+        <p>
+            Through a live event fundraiser, we raised enough funds to purchase him a Samsung A21. His joy was unforgettable and became a reminder of how small acts of kindness can create lasting impact.
+        </p>
+        <p>
+            Sadly, Anzio passed away later in 2022, but his story continues to inspire everything we do.
+        </p>
+    </div>
+
+    <!-- MAJESTIC BEAST -->
+    <div class="story">
+        <div class="tag">2024 • Animal Welfare</div>
+        <h3>Majestic Beast Rescue</h3>
+        <p>
+            In December 2024, we supported Majestic Beast Rescue in Klapmuts, founded by canine behaviourist Armand Groenewald.
+            The sanctuary has rescued and rehabilitated over 186 dogs across South Africa since 2019.
+        </p>
+        <p>
+            The fundraiser helped sustain food, training, and care for abandoned and abused dogs, ensuring they receive a second chance at life.
+        </p>
+    </div>
+
+    <!-- 2HO -->
+    <div class="story">
+        <div class="tag">Community Development</div>
+        <h3>2HO (To Help Others)</h3>
+        <p>
+            2HO began in 2019 as a local initiative and has grown into a global community of over 1,300 members.
+            Focused on Cape Town communities like Richwood and Bothasig, the initiative supports feeding schemes and outreach programs.
+        </p>
+        <p>
+            Omega Pride Events helped facilitate fundraising that provided essential groceries to community kitchens and feeding programs.
+        </p>
+    </div>
+
+    <!-- HAVEN -->
+    <div class="story">
+        <div class="tag">2020 • Homeless Support</div>
+        <h3>Haven Night Shelter</h3>
+        <p>
+            In 2020, Omega Pride Events partnered with Ms. Sheild Jacobs to raise funds for the Haven Night Shelter,
+            a Cape Town institution supporting the homeless since 1978.
+        </p>
+        <p>
+            Over R4,000 was raised to restock essential food supplies. The Haven continues to provide shelter, rehabilitation, and dignity restoration programs.
+        </p>
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="section">
+    <div class="cta">
+        <h2>Want to Help Change Lives?</h2>
+        <p>Partner with us or support our next initiative and be part of real impact in South Africa.</p>
+
+        <button class="btn" onclick="window.location.href='mailto:hello@omegapride.co.za'">
+            Get Involved
+        </button>
+    </div>
+</section>
+
+</body>
+</html>
