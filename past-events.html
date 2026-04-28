@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omega Pride | Past Events</title>
+
+<style>
+:root {
+    --bg:#050505;
+    --surface:#111112;
+    --accent:#3b82f6;
+    --text:#ffffff;
+    --muted:#a1a1aa;
+    --border:rgba(255,255,255,0.08);
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* NAV */
+nav{
+    padding:20px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--border);
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(5,5,5,0.8);
+    backdrop-filter:blur(20px);
+    z-index:10;
+}
+.logo{
+    font-weight:900;
+    letter-spacing:-1px;
+}
+.logo span{ color:var(--accent); }
+
+/* HERO */
+.hero{
+    height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 10%;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), #050505),
+        url("https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000") center/cover;
+}
+
+.hero h1{
+    font-size:4rem;
+    letter-spacing:-2px;
+    margin:0;
+}
+.hero p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* SECTION */
+.section{
+    padding:80px 10%;
+}
+
+.section h2{
+    font-size:2.5rem;
+    letter-spacing:-1px;
+    margin-bottom:30px;
+}
+
+/* EVENTS LIST */
+.event{
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:25px;
+    border-radius:20px;
+    margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.event h3{
+    margin:0;
+}
+
+.event p{
+    margin:5px 0 0;
+    color:var(--muted);
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.card .info{
+    padding:15px;
+}
+
+.tag{
+    color:var(--accent);
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+/* LOGO GRID */
+.logo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+}
+
+.logo-box{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+    opacity:0.9;
+}
+
+/* BUTTON */
+.btn{
+    padding:10px 15px;
+    background:var(--accent);
+    border:none;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">OMEGA<span>PRIDE</span></div>
+    <div style="font-size:0.8rem;color:var(--muted);">Past Events Archive</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Past Events</h1>
+        <p>Moments we've created. Places we've been. Experiences we delivered.</p>
+    </div>
+</section>
+
+<!-- PAST EVENTS LIST -->
+<section class="section">
+    <h2>Event History</h2>
+
+    <div class="event">
+        <div>
+            <h3>Harry Potter Trivia Night</h3>
+            <p>Tiger’s Milk, Blouberg • May 2026</p>
+        </div>
+        <button class="btn">View Photos</button>
+    </div>
+
+    <div class="event">
+        <div>
+            <h3>80s vs 90s Muzingo Night</h3>
+            <p>The Palms, Brackenfell • April 2026</p>
+        </div>
+        <button class="btn">View Photos</button>
+    </div>
+
+    <div class="event">
+        <div>
+            <h3>Corporate Fundraiser Gala</h3>
+            <p>Cape Town Convention Centre • March 2026</p>
+        </div>
+        <button class="btn">View Photos</button>
+    </div>
+
+    <div class="event">
+        <div>
+            <h3>Private Birthday Experience</h3>
+            <p>Clifton Beach Villa • February 2026</p>
+        </div>
+        <button class="btn">View Photos</button>
+    </div>
+</section>
+
+<!-- WHERE WE'VE BEEN -->
+<section class="section">
+    <h2>Where We've Been</h2>
+
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200">
+            <div class="info">
+                <div class="tag">Cape Town</div>
+                <h3>Beach Events</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200">
+            <div class="info">
+                <div class="tag">Corporate</div>
+                <h3>Conference Venues</h3>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200">
+            <div class="info">
+                <div class="tag">Entertainment</div>
+                <h3>Live Venues</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CLIENT LOGOS -->
+<section class="section">
+    <h2>Brands & Venues</h2>
+
+    <div class="logo-grid">
+        <div class="logo-box">Tiger’s Milk</div>
+        <div class="logo-box">The Palms</div>
+        <div class="logo-box">CTICC</div>
+        <div class="logo-box">Private Clients</div>
+        <div class="logo-box">Corporate SA</div>
+        <div class="logo-box">Event Partners</div>
+    </div>
+</section>
+
+</body>
+</html>
