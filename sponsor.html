@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omega Pride | Become a Prize Sponsor</title>
+
+<style>
+:root{
+    --bg:#050505;
+    --surface:#111112;
+    --accent:#3b82f6;
+    --text:#ffffff;
+    --muted:#a1a1aa;
+    --border:rgba(255,255,255,0.08);
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* NAV */
+nav{
+    padding:20px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(5,5,5,0.8);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    z-index:10;
+}
+.logo{
+    font-weight:900;
+    letter-spacing:-1px;
+}
+.logo span{ color:var(--accent); }
+
+/* HERO */
+.hero{
+    height:70vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 10%;
+    background:
+        linear-gradient(rgba(0,0,0,0.7), #050505),
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2000") center/cover;
+}
+
+.hero h1{
+    font-size:4rem;
+    letter-spacing:-2px;
+    margin:0;
+}
+.hero p{
+    color:var(--muted);
+    max-width:700px;
+    margin:15px auto 0;
+}
+
+/* SECTION */
+.section{
+    padding:80px 10%;
+}
+
+.section h2{
+    font-size:2.5rem;
+    margin-bottom:30px;
+    letter-spacing:-1px;
+}
+
+/* BENEFITS GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(59,130,246,0.4);
+}
+
+.card h3{
+    margin:0 0 10px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.check{
+    color:var(--accent);
+    font-weight:bold;
+    margin-right:8px;
+}
+
+/* CTA BOX */
+.cta{
+    background:linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
+    border:1px solid var(--border);
+    padding:40px;
+    border-radius:24px;
+    text-align:center;
+}
+
+.cta h2{
+    margin-bottom:10px;
+}
+
+.cta p{
+    color:var(--muted);
+}
+
+.btn{
+    margin-top:20px;
+    padding:14px 22px;
+    background:var(--accent);
+    border:none;
+    color:white;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* EMAIL */
+.email{
+    color:var(--accent);
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">OMEGA<span>PRIDE</span></div>
+    <div style="color:var(--muted); font-size:0.8rem;">Prize Sponsorship</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Become a Prize Sponsor</h1>
+        <p>
+            Partner with Omega Pride Events and showcase your brand to a highly engaged audience
+            while making a meaningful community impact.
+        </p>
+    </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section">
+    <h2>What You Get</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3><span class="check">✔</span> Marketing on Active Social Media Pages</h3>
+            <p>Your brand will be featured across our active social platforms reaching a growing community of event-goers and followers.</p>
+        </div>
+
+        <div class="card">
+            <h3><span class="check">✔</span> One Year Website Advertising</h3>
+            <p>Get your logo and business link displayed on our website for 12 months when sponsoring prizes for just one event.</p>
+        </div>
+
+        <div class="card">
+            <h3><span class="check">✔</span> Complimentary Tickets</h3>
+            <p>Enjoy VIP access with free tickets to selected upcoming events for you and your team.</p>
+        </div>
+
+        <div class="card">
+            <h3><span class="check">✔</span> Brand Exposure at Events</h3>
+            <p>Your brand is showcased live through banners, announcements, and digital displays at all events.</p>
+        </div>
+
+        <div class="card">
+            <h3><span class="check">✔</span> Personalized Recognition</h3>
+            <p>We publicly thank your business across all platforms and during live events.</p>
+        </div>
+
+        <div class="card">
+            <h3><span class="check">✔</span> Community Engagement</h3>
+            <p>Align your brand with fun, inclusivity, and real community experiences across Cape Town.</p>
+        </div>
+
+        <div class="card">
+            <h3><span class="check">✔</span> Collaborative Opportunities</h3>
+            <p>Access co-branding, promotions, and long-term partnerships with Omega Pride Events.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+    <div class="cta">
+        <h2>Ready to Become a Sponsor?</h2>
+        <p>
+            Join us in creating unforgettable experiences while putting your brand in front of real audiences.
+        </p>
+
+        <p style="margin-top:15px;">
+            Contact us: <span class="email">hello@omegapride.co.za</span>
+        </p>
+
+        <button class="btn" onclick="window.location.href='mailto:hello@omegapride.co.za'">
+            Enquire Now
+        </button>
+    </div>
+</section>
+
+</body>
+</html>
