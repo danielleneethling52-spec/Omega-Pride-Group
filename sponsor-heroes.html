@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omega Pride | Sponsor Heroes</title>
+
+<style>
+:root{
+    --bg:#050505;
+    --surface:#111112;
+    --accent:#3b82f6;
+    --text:#ffffff;
+    --muted:#a1a1aa;
+    --border:rgba(255,255,255,0.08);
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* NAV */
+nav{
+    padding:20px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(5,5,5,0.85);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+    z-index:10;
+}
+
+.logo{
+    font-weight:900;
+    letter-spacing:-1px;
+}
+.logo span{ color:var(--accent); }
+
+/* HERO */
+.hero{
+    height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 10%;
+    background:
+        linear-gradient(rgba(0,0,0,0.75), #050505),
+        url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2000") center/cover;
+}
+
+.hero h1{
+    font-size:4rem;
+    letter-spacing:-2px;
+    margin:0;
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:15px;
+}
+
+/* SECTION */
+.section{
+    padding:80px 10%;
+}
+
+.section h2{
+    font-size:2.5rem;
+    margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(59,130,246,0.4);
+}
+
+.card h3{
+    margin:0 0 10px;
+}
+
+.card p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.9rem;
+}
+
+.tag{
+    color:var(--accent);
+    font-size:0.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:block;
+}
+
+/* CTA */
+.cta{
+    background:linear-gradient(135deg, rgba(59,130,246,0.15), transparent);
+    border:1px solid var(--border);
+    padding:40px;
+    border-radius:24px;
+    text-align:center;
+    margin-top:60px;
+}
+
+.btn{
+    margin-top:20px;
+    padding:14px 22px;
+    background:var(--accent);
+    border:none;
+    color:white;
+    font-weight:bold;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">OMEGA<span>PRIDE</span></div>
+    <div style="color:var(--muted); font-size:0.8rem;">Sponsor Heroes</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Sponsor Heroes</h1>
+        <p>The businesses that help us create unforgettable experiences across Cape Town.</p>
+    </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="section">
+    <h2>Our Partners</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <span class="tag">Logistics</span>
+            <h3>Rosebud Couriers</h3>
+            <p>Tel: +27 76 338 0189</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Energy</span>
+            <h3>All Petroleum</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Automotive</span>
+            <h3>SUP Auto</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Engineering</span>
+            <h3>Goch & Cooper</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Services</span>
+            <h3>FMM</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Beauty</span>
+            <h3>Timeless Beauty</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Nails & Beauty</span>
+            <h3>Amy Nails</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Tech</span>
+            <h3>MultiAxess</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Lifestyle</span>
+            <h3>Queen Cannabee</h3>
+        </div>
+
+        <div class="card">
+            <span class="tag">Construction</span>
+            <h3>UD Projects</h3>
+            <p>Tel: +27 82 731 5155</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Partner</span>
+            <h3>Corporate Sponsor</h3>
+            <p>Tel: +27 73 759 3341</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Partner</span>
+            <h3>Business Sponsor</h3>
+            <p>Tel: +27 79 889 5135</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">Partner</span>
+            <h3>Community Sponsor</h3>
+            <p>Tel: +27 79 389 2399</p>
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Want to Become a Sponsor Hero?</h2>
+        <p>Join the businesses helping us build real impact across Cape Town events.</p>
+        <button class="btn" onclick="window.location.href='mailto:hello@omegapride.co.za'">
+            Partner With Us
+        </button>
+    </div>
+
+</section>
+
+</body>
+</html>
