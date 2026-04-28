@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omega Pride Group | The Creative Collective</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #111112;
+            --accent: #3b82f6; 
+            --text-main: #ffffff;
+            --text-dim: #a1a1aa;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; text-transform: uppercase; cursor: pointer; }
+        .logo span { color: var(--accent); }
+
+        /* --- HOMEPAGE HERO --- */
+        .hero { 
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.4), #050505), url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2000') center/cover;
+        }
+
+        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 1rem; letter-spacing: -4px; line-height: 0.9; }
+        .hero p { color: var(--text-dim); max-width: 700px; font-size: 1.2rem; font-weight: 300; margin-bottom: 2rem; }
+
+        /* --- INFO SECTION --- */
+        .info-strip {
+            padding: 100px 10%;
+            background: #080808;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .info-strip h2 { font-size: 2.5rem; letter-spacing: -2px; }
+        .info-strip p { color: var(--text-dim); line-height: 1.8; }
+
+        /* --- VISUAL GRID --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            padding: 60px 5% 120px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            height: 500px;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .service-card:hover { transform: scale(0.98); }
+
+        .card-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1s ease;
+        }
+
+        .service-card:hover .card-bg { transform: scale(1.1); }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent 70%);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .card-overlay h3 { font-size: 2rem; margin: 5px 0; }
+        .card-overlay .tag { color: var(--accent); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- DEDICATED VIEW --- */
+        .view {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .view.active { display: block; }
+
+        .view-header {
+            height: 50vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 60px 10%;
+        }
+
+        .view-content {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 80px;
+        }
+
+        /* --- EVENT CARDS --- */
+        .event-item {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- FORMS & BUTTONS --- */
+        .booking-form {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1b;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            border: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover { filter: brightness(1.2); }
+
+        .back-btn {
+            position: absolute;
+            top: 40px; left: 40px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        @media (max-width: 1000px) {
+            .info-strip, .view-content, .event-item { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="closeView()">OMEGA<span>PRIDE</span></div>
+<div style="font-size:0.7rem;opacity:0.8;display:flex;gap:15px;">
+    <div>Past Events</div>
+    <div>Become a Prize Sponsor</div>
+    <div>Who We Help</div>
+    <div>Contact Us</div>
+</div>    </nav>
+
+    <div id="home">
+        <section class="hero">
+            <p style="text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 20px;">The Creative Brand Group</p>
+            <h1>Bold Vision.<br>Precision Execution.</h1>
+            <p>Cape Town's premier collective for immersive entertainment and cinematic media.</p>
+        </section>
+
+        <section class="info-strip">
+            <div>
+                <h2>A Multidisciplinary<br>Powerhouse.</h2>
+            </div>
+            <div>
+                <p>Founded by John Fouché, Omega Pride Group has spent over 8 years mastering the art of the "Experience." Whether it’s a high-stakes corporate fundraiser or a bespoke fragrance line, our core remains the same: Quality, Connection, and Inclusivity.</p>
+            </div>
+        </section>
+
+        <div class="grid-container">
+    <!-- EVENTS -->
+    <div class="service-card" onclick="openView('events')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200')"></div>
+        <div class="card-overlay">
+            <span class="tag">Entertainment</span>
+            <h3>Omega Pride Events</h3>
+            <p>Muzingo, Quizzes & Hosting</p>
+        </div>
+    </div>
+
+    <!-- PHOTOGRAPHY -->
+    <div class="service-card" onclick="openView('photo')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200')"></div>
+        <div class="card-overlay">
+            <span class="tag">Media</span>
+            <h3>Classic Photography</h3>
+            <p>Automobile & Event Capture</p>
+        </div>
+    </div>
+
+    <!-- MYSTERY -->
+    <div class="service-card" onclick="openView('mystery')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1200')"></div>
+        <div class="card-overlay">
+            <span class="tag">Experiences</span>
+            <h3>Murder Mysteries SA</h3>
+            <p>Physical Case Files</p>
+        </div>
+    </div>
+
+    <!-- PERFUME -->
+    <div class="service-card" onclick="openView('perfume')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1615634260167-c8cdede054de')"></div>
+        <div class="card-overlay">
+            <span class="tag">Experience</span>
+            <h3>Signature Perfume Line</h3>
+            <p>Luxury crafted fragrances & custom scents</p>
+        </div>
+    </div>
+
+    <!-- GADGETS -->
+    <div class="service-card" onclick="openView('gadgets')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475')"></div>
+        <div class="card-overlay">
+            <span class="tag">Experience</span>
+            <h3>Tech & Gadgets</h3>
+            <p>Curated lifestyle electronics & tools</p>
+        </div>
+    </div>
+
+    <!-- KIDS -->
+    <div class="service-card" onclick="openView('kids')">
+        <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1200')"></div>
+        <div class="card-overlay">
+            <span class="tag">Experience</span>
+            <h3>Kids Products</h3>
+            <p>Fun learning books, puzzles & activities</p>
+        </div>
+    </div>
+
+</div>
+<div id="view-events" class="view">
+    <div class="back-btn" onclick="closeView()">← BACK</div>
+
+    <div class="view-header" style="background: linear-gradient(rgba(0,0,0,0.5), #050505), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2000') center/cover;">
+        <h2 style="font-size: 4rem; letter-spacing: -3px;">
+            Omega Pride <span style="color:var(--accent)">Events</span>
+        </h2>
+    </div>
+
+    <div class="view-content">
+
+        <!-- LEFT SIDE: MOCK EVENTS -->
+        <div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0; font-size:1.5rem;">Harry Potter Trivia Night</h4>
+                    <p style="color:var(--text-dim);">
+                        Tiger's Milk, Blouberg | May 15, 2026 @ 19:00
+                    </p>
+                </div>
+                <div>
+                    <p style="font-weight:bold; font-size:1.2rem; margin-bottom:10px;">R120.00</p>
+                    <button class="btn-submit" onclick="alert('Proceeding to Secure Payment...')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0; font-size:1.5rem;">80s vs 90s Muzingo</h4>
+                    <p style="color:var(--text-dim);">
+                        The Palms, Brackenfell | May 28, 2026 @ 18:30
+                    </p>
+                </div>
+                <div>
+                    <p style="font-weight:bold; font-size:1.2rem; margin-bottom:10px;">R100.00</p>
+                    <button class="btn-submit" onclick="alert('Proceeding to Secure Payment...')">
+                        Book Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: BOOKING FORM (RESTORED) -->
+        <div class="booking-form">
+            <h4 style="margin-top:0">Private Event Inquiry</h4>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" placeholder="Your Name">
+            </div>
+
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text" placeholder="Your Number">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Your Email">
+            </div>
+
+            <div class="form-group">
+                <label>Event Type</label>
+                <select>
+                    <option>Corporate Event</option>
+                    <option>Birthday Party</option>
+                    <option>Fundraiser</option>
+                    <option>Private Function</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Event Date</label>
+                <input type="date">
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea rows="4" placeholder="Tell us about your event..."></textarea>
+            </div>
+
+            <button class="btn-submit">Submit Inquiry</button>
+        </div>
+
+</div>
+    </div>
+
+    <div id="view-photo" class="view">
+    <div class="back-btn" onclick="closeView()">← BACK</div>
+
+    <!-- HERO HEADER -->
+    <div class="view-header" style="background: linear-gradient(rgba(0,0,0,0.55), #050505), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2000') center/cover;">
+        <h2 style="font-size: 4rem; letter-spacing: -3px;">
+            Photography <span style="color:var(--accent)">Studio</span>
+        </h2>
+    </div>
+
+    <div class="view-content">
+
+        <!-- LEFT SIDE -->
+        <div>
+
+            <h3 style="font-size:2rem; margin-top:0;">Professional Photography Services</h3>
+
+            <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 30px;">
+                We capture cinematic-quality visuals for brands, individuals, and events across Cape Town.
+                From automotive shoots to corporate storytelling, we create visuals that sell emotion, not just images.
+            </p>
+
+            <!-- SERVICE CATEGORIES -->
+            <h4 style="margin-bottom:15px;">Photography Categories</h4>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">📸 Event Photography</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">
+                        Corporate events, parties, launches & functions
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">🚗 Automotive Shoots</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">
+                        High-end vehicle photography & cinematic edits
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">🏢 Corporate Branding</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">
+                        Business profiles, staff headshots, marketing visuals
+                    </p>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">🎥 Lifestyle & Content</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">
+                        Influencer shoots, personal branding, social content
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: BOOKING FORM -->
+        <div class="booking-form">
+
+            <h4 style="margin-top:0;">Book a Photography Session</h4>
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Your Name">
+            </div>
+
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text" placeholder="Your Number">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="Your Email">
+            </div>
+
+            <div class="form-group">
+                <label>Photography Type</label>
+                <select>
+                    <option>Event Photography</option>
+                    <option>Automotive Shoot</option>
+                    <option>Corporate Branding</option>
+                    <option>Lifestyle / Content Creation</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date">
+            </div>
+
+            <div class="form-group">
+                <label>Project Details</label>
+                <textarea rows="4" placeholder="Tell us what you need photographed..."></textarea>
+            </div>
+
+            <button class="btn-submit">Request Booking</button>
+
+        </div>
+
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <div id="view-mystery" class="view">
+        <div class="back-btn" onclick="closeView()">← BACK</div>
+        <div class="view-header" style="background: linear-gradient(rgba(0,0,0,0.5), #050505), url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=2000') center/cover;">
+            <h2 style="font-size: 4rem; letter-spacing: -3px;">Case <span style="color:var(--accent)">Files</span></h2>
+        </div>
+        <div class="view-content">
+            <div>
+                <h3>The Heist: physical Evidence File</h3>
+                <p>A complete investigation package couriered to your door. Real documents, photos, and clues.</p>
+                <h4 style="font-size: 2rem;">R450.00</h4>
+                <button class="btn-submit" style="width:200px;" onclick="alert('Added to cart. Proceeding to checkout...')">Order & Pay Online</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div id="view-perfume" class="view">
+    <div class="back-btn" onclick="closeView()">← BACK</div>
+
+    <div class="view-header" style="background: linear-gradient(rgba(0,0,0,0.55), #050505), url('https://images.unsplash.com/photo-1615634260167-c8cdede054de?q=80&w=2000') center/cover;">
+        <h2 style="font-size: 4rem; letter-spacing: -3px;">
+            Signature <span style="color:var(--accent)">Perfume Line</span>
+        </h2>
+    </div>
+
+    <div class="view-content">
+
+        <!-- LEFT SIDE: PERFUME COLLECTION -->
+        <div>
+
+            <h3 style="font-size:2rem; margin-top:0;">Luxury Fragrance Collection</h3>
+
+            <p style="color:var(--text-dim); line-height:1.8;">
+                Each scent is crafted to evoke emotion, memory, and presence. Designed for bold personalities and lasting impressions.
+            </p>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">Noir Élégance</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">Deep musk, amber & dark woods</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R799</p>
+                    <button class="btn-submit">Order</button>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">Ocean Pulse</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">Fresh citrus, marine & clean notes</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R699</p>
+                    <button class="btn-submit">Order</button>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">Velvet Rose</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">Floral, soft spice & luxury warmth</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R899</p>
+                    <button class="btn-submit">Order</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: FRAGRANCE ENQUIRY -->
+        <div class="booking-form">
+
+            <h4 style="margin-top:0;">Fragrance Consultation</h4>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Scent Style</label>
+                <select>
+                    <option>Fresh / Clean</option>
+                    <option>Deep / Musky</option>
+                    <option>Floral / Soft</option>
+                    <option>Custom Blend</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea rows="4" placeholder="Describe the type of scent you're looking for..."></textarea>
+            </div>
+
+            <button class="btn-submit">Request Consultation</button>
+
+        </div>
+
+    </div>
+</div>
+    
+    <div id="view-gadgets" class="view">
+    <div class="back-btn" onclick="closeView()">← BACK</div>
+
+    <div class="view-header" style="background: linear-gradient(rgba(0,0,0,0.55), #050505), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000') center/cover;">
+        <h2 style="font-size: 4rem; letter-spacing: -3px;">
+            Tech & <span style="color:var(--accent)">Gadgets</span>
+        </h2>
+    </div>
+
+    <div class="view-content">
+
+        <!-- LEFT SIDE: PRODUCTS -->
+        <div>
+
+            <h3 style="font-size:2rem; margin-top:0;">Curated Lifestyle Technology</h3>
+
+            <p style="color:var(--text-dim); line-height:1.8;">
+                We source and curate premium everyday tech designed to improve lifestyle, productivity, and entertainment.
+            </p>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">Smart Mini Projector</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">Portable cinema experience with HD output</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R1,499</p>
+                    <button class="btn-submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">Wireless Noise-Cancel Headphones</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">Studio-quality sound & deep bass</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R899</p>
+                    <button class="btn-submit">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="event-item">
+                <div>
+                    <h4 style="margin:0;">Smart Fitness Band</h4>
+                    <p style="color:var(--text-dim); margin:5px 0 0;">Track sleep, heart rate & workouts</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R599</p>
+                    <button class="btn-submit">Buy Now</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE: ENQUIRY -->
+        <div class="booking-form">
+
+            <h4 style="margin-top:0;">Gadget Enquiry</h4>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Contact Number</label>
+                <input type="text">
+            </div>
+
+            <div class="form-group">
+                <label>Product Interest</label>
+                <select>
+                    <option>Smart Projector</option>
+                    <option>Headphones</option>
+                    <option>Fitness Band</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea rows="4" placeholder="Ask about stock, bulk orders or delivery..."></textarea>
+            </div>
+
+            <button class="btn-submit">Send Enquiry</button>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="view-kids" class="view">
+    <div class="back-btn" onclick="closeView()">← BACK</div>
+    <div class="view-header" style="background: linear-gradient(rgba(0,0,0,0.5), #050505), url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=2000') center/cover;">
+        <h2 style="font-size: 4rem;">Kids <span style="color:var(--accent)">Products</span></h2>
+    </div>
+    <div class="view-content">
+        <div>
+            <div class="event-item">
+                <div>
+                    <h4>Activity Book Vol.1</h4>
+                    <p style="color:var(--text-dim);">Fun learning & puzzles</p>
+                </div>
+                <div>
+                    <p style="font-weight:bold;">R120</p>
+                    <button class="btn-submit">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        function openView(id) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeView() {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
